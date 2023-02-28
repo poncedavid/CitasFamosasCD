@@ -1,0 +1,39 @@
+*{
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.ohno{
+    color: red;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.white{
+    color: white;
+}
+
+.move{
+    margin-left: 150px;
+}
+
+.move-r{
+    margin-right: 150px;
+}
+
+
+.box{
+    border: 2px dotted black;
+    padding: 15px;
+}
+
+.red{
+    color: red;
+}
+
+.moveit{
+    margin-left: 700px;
+}

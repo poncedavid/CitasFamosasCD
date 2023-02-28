@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro e Ingreso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css.css' %}"> 
+</head>
+<body class="container-fluid">
+    <div class="text-center" >
+        <h1 class="text-aling-center">Ingreso y Registro</h1>
+    </div>
+
+    <div>
+
+
+        <div class="flash text-center ">
+            {% if messages %}                           
+            {% for message in messages %}           
+            <h6>{{message | safe}}</h6>                  
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+        
+    <div class='row'>
+        <div class='left col-3'></div>
+
+        <!-- FORMULARIO DE REGISTRO -->
+        <div class='left col-3'>
+        <h3 class="text-center">Registro</h3>
+            <form action="/register" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="ffname">Nombre:</label>
+                    <input type="text" id="ffname" name="first_name" class="form-control text-cen" placeholder="El nombre debe tener al menos 2 caracteres" value="{{request.session.first_name}}">
+                </div>
+                <div class="form-group">
+                    <label for="llname">Apellido:</label>
+                    <input type="text" id="llname" name="last_name" class="form-control" placeholder="El apellido debe tener al menos 2 caracteres" value={{request.session.last_name}}>
+                </div>
+                <div class="form-group">
+                        <label for="eemail">Correo:</label>
+                        <input type="text" id="eemail" name="email" class="form-control" placeholder="Debe ser una dirección de correo electrónico válida" value={{request.session.email}}>
+                </div>
+                <div class="form-group">
+                    <label for="bbirthdate">Fecha nacimiento:</label>
+                    <input type="date" id="bbirthdate" name="birthdate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="pw">Contraseña:</label>
+                    <input type="password" id="pw" name="password" class="form-control" placeholder="Ingrese contraseña">
+                </div>
+                <div class="form-group">
+                    <label for="confirmpassword">Confirme contraseña:</label>
+                    <input type="password" id="pwconfirm" name="confirmpassword" class="form-control" placeholder="Confirme contraseña">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary ">Registro</button>
+            </form>
+        </div>
+        <!-- FIN DE REGISTRO -->
+
+
+
+        <!-- FORMULARIO DE INGRESO -->
+
+        <div class='right col-3'>
+            <h3 class="text-center">Ingreso</h3>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="eeemail">Email:</label>
+                    <input type="text" id="eeemail" name="email" class="form-control" placeholder="Ingrese correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="ppword">Contraseña:</label>
+                    <input type="password" id="ppword" name="password"  placeholder="Ingrese contraseña" class="form-control" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Ingreso</button>
+            </form>
+        </div>
+
+        <!-- FIN DE INGRESO -->
+
+        <div class='right col-3'>
+
+        </div>
+        
+    </div>
+</body>
+</body>
+</html>
